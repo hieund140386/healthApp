@@ -1,0 +1,13 @@
+.action-menu {
+  position: absolute;
+  z-index: 1001;
+  top: 64px;
+  right: 160px;
+  width: 280px;
+  .show {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+}

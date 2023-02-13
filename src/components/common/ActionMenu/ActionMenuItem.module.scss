@@ -1,0 +1,14 @@
+.action-menu-item {
+  line-height: 26px;
+  font-size: 18px;
+  background-color: #777;
+  padding: 23px 32px;
+  &:not(:last-of-type) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    mix-blend-mode: normal;
+  }
+  &:hover {
+    cursor: pointer;
+    color: #ff963c;
+  }
+}
