@@ -8,7 +8,7 @@ import Record from "../../../assets/images/record.svg";
 import MenuItem from "../MenuItem";
 import Overlay from "../Overlay";
 import ActionMenu from "../ActionMenu";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const MENU_ITEMS = [
   {
@@ -60,7 +60,6 @@ export default function Header() {
           <div
             className={classes["menu-list__item"]}
             onClick={handleOnClickActionMenu}
-            style={{ position: "relative" }}
           >
             <img src={isOpenMenu ? Close : BurgerMenu} alt="menu" />
             {isOpenMenu && <Overlay />}

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className={classes.footer}>
       <nav>
-        <ul className={classes.footer}>
+        <ul>
           <li>
             <Link to="#">会員登録</Link>
           </li>

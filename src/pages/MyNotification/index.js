@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function MyNotificationPage() {
   document.title = "お知らせ";
 

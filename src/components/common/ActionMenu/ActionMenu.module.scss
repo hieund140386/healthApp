@@ -4,10 +4,23 @@
   top: 64px;
   right: 160px;
   width: 280px;
+  color: #fff;
+  &:hover {
+    cursor: pointer;
+  }
   .show {
     display: block;
   }
   .hidden {
     display: none;
+  }
+  &:last-of-type {
+    img {
+      // position: relative;
+      // z-index: 1001;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }

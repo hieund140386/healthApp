@@ -4,8 +4,7 @@
   background-color: #777;
   padding: 23px 32px;
   &:not(:last-of-type) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    mix-blend-mode: normal;
+    border-bottom: 1px solid #2e2e2e25;
   }
   &:hover {
     cursor: pointer;
