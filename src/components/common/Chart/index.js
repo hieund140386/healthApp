@@ -11,6 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import { useEffect, useMemo } from "react";
+import BadgesList from "../Badge/BadgesList";
 
 ChartJS.register(
   CategoryScale,
@@ -22,28 +23,79 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false,
-    },
-  },
-
-  scales: {
-    x: {
-      grid: {
-        color: "#777",
-        drawTicks: false,
-      },
-    },
-    y: {
-      display: false,
-    },
-  },
-};
-
 export default function Chart(props) {
+
+  const CHART_OPTIONS = useMemo(() => {
+    return {
+      responsive: true,
+      layout: {
+        padding: {
+          left: 53,
+          top: 12
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        title: {
+          text: ['BODY', 'RECORD'],
+          display: props.isDetail,
+          align: 'start',
+          padding: {
+            top: 0,
+            bottom: 10,
+          },
+          color: "#fff"
+        },
+        labels: {
+          color: "red"
+        }
+      },
+      scales: {
+        x: {
+          grid: {
+            color: "#777",
+            drawTicks: false,
+          },
+          ticks: {
+            color: "#fff"
+          }
+        },
+        y: {
+          display: true,
+          beginAtZero: true,
+          min: 0,
+          max: 120,
+          ticks: {
+            stepSize: 10
+          }
+        },
+      },
+    };
+  }, [props.isDetail])
+
+  const BADGES_LIST = useMemo(() => {
+    return [
+      {
+        title: '日',
+        onClick: () => {props.onClick && props.onClick('date')}
+      },
+      {
+        title: '週',
+        onClick: () => {props.onClick && props.onClick('week')}
+      },
+      {
+        title: '月',
+        onClick: () => {props.onClick && props.onClick('month')}
+      },
+      {
+        title: '年',
+        onClick: () => {props.onClick && props.onClick('year')}
+      },
+    ]
+  }, [props.onClick])
+
   const data = useMemo(() => {
     return {
       labels: props.labels,
@@ -69,16 +121,20 @@ export default function Chart(props) {
 
   useEffect(() => {
     const canvasEl = document.getElementById(props.id);
-    canvasEl.style.backgroundColor = "#000";
+    canvasEl.style.backgroundColor = "inherit";
   }, [props.id]);
 
   return (
     <div
       id={props.id}
       className={classes.chart}
-      style={{ width: "100%", height: 312 }}
+      style={{position: 'relative' }}
     >
-      <Line datasetIdKey={props.id} data={data} options={options} />
+      {props.isDetail && props.duration && <div className={classes['duration-label']}>{props.duration}</div>}
+      <div style={{height: props.isDetail ? 250 : 312}}>
+        <Line datasetIdKey={props.id} data={data} options={CHART_OPTIONS} />
+      </div>
+      {props.isDetail && <BadgesList selectedBadge="" badgesList={BADGES_LIST} />}
     </div>
   );
 }

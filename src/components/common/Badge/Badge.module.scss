@@ -1,14 +1,26 @@
 .badge {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: #ea6c00;
-  position: absolute;
-  top: 0;
-  left: 22px;
+  width: 56px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #ffcc21;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  &:not(:first-child) {
+    margin-left: 16px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    transform: translateY(2px);
+  }
+  .active {
+    background-color: #ffcc21;
+    color: #fff;
+  }
 }

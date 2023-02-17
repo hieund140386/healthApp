@@ -9,22 +9,24 @@ export default function TopPage(props) {
   const [myRecordData, setMyRecordData] = useState({
     duration: [],
     progressPercent: 0,
-    data: {
+    datasets: {
       originalHealthData: [],
       recordedHealthData: [],
     },
   });
 
   const getMyRecordData = useCallback(async () => {
-    const { data } = await getMyRecord();
-    const { healthData } = data;
-    setMyRecordData((prev) => healthData);
+    const res = await getMyRecord();
+    if (res.message === 'success') {
+      const { data } = res;
+      const { healthInfo } = data;
+      setMyRecordData(healthInfo)
+    }
   }, []);
 
   useEffect(() => {
     getMyRecordData();
   }, []);
-  console.log("effect");
 
   return (
     <div className={classes["top-page"]}>

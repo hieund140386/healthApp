@@ -1,5 +1,5 @@
 import classes from "./Badge.module.scss";
 
 export default function Badge(props) {
-  return <div className={classes.badge}>{props.children}</div>;
+  return <button className={classes.badge} onClick={props.onClick}>{props.children}</button>;
 }

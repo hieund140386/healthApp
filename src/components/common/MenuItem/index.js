@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { NavLink } from "react-router-dom";
-import Badge from "../Badge";
+import Noti from "../Noti";
 import classes from "./MenuItem.module.scss";
 
 export default memo(function MenuItem(props) {
@@ -12,7 +12,7 @@ export default memo(function MenuItem(props) {
     >
       {props.imgSrc && <img src={props.imgSrc} alt={props.imgName} />}
       {props.title && <span>{props.title}</span>}
-      {props.badge && <Badge>1</Badge>}
+      {props.noti && <Noti>1</Noti>}
       {!props.imgSrc && !props.title && props.children}
     </NavLink>
   );

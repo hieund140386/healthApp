@@ -1,4 +1,9 @@
 .chart {
-  padding-left: 53px;
-  padding-top: 12px;
+  .duration-label {
+    color: #fff;
+    position: absolute;
+    top: 16px;
+    left: 120px;
+
+  }
 }

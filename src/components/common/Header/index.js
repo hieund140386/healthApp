@@ -54,7 +54,7 @@ export default function Header() {
               imgName={item.imgName}
               title={item.title}
               key={item.imgSrc}
-              badge={item.title === "お知らせ"}
+              noti={item.title === "お知らせ"}
             />
           ))}
           <div
