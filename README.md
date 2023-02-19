@@ -1,3 +1,5 @@
+# Please pay attention that the data in this demo got from testapi.io. Due to free account, just request about 1000 times/month.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
