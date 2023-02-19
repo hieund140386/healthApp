@@ -1,0 +1,33 @@
+.my-record {
+  .sub-menus-list {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    column-gap: 48px;
+  }
+  .chart {
+    width: 960px;
+    background-color: #414141;
+    text-align: center;
+    margin: 56px auto;
+  }
+  .diary {
+    color: #414141;
+    .title {
+      font-size: 22px;
+      line-height: 27px;
+      width: 960px;
+      margin: 0 auto;
+    }
+    .diaries-list {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      gap: 12px;
+      justify-content: center;
+    }
+  }
+  .button {
+    text-align: center;
+  }
+}

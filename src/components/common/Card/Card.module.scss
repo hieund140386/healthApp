@@ -1,0 +1,38 @@
+.card {
+  background: #2e2e2e;
+  border: 24px solid #ffcc21;
+  width: 288px;
+  height: 288px;
+  position: relative;
+  img {
+    opacity: 0.25;
+  }
+  .content {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    & p:first-of-type {
+      color: #ffcc21;
+      font-size: 25px;
+      line-height: 30px;
+    }
+    & p:last-of-type {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 1px 0 3px;
+      background-color: #ff963c;
+      width: 160px;
+      height: 24px;
+      text-align: center;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

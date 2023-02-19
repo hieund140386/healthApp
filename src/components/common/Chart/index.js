@@ -12,6 +12,8 @@ import {
 } from "chart.js";
 import { useEffect, useMemo } from "react";
 import BadgesList from "../Badge/BadgesList";
+import { useDispatch } from "react-redux";
+import actions from "../../../store/actions";
 
 ChartJS.register(
   CategoryScale,
@@ -24,14 +26,15 @@ ChartJS.register(
 );
 
 export default function Chart(props) {
+  const dispatch = useDispatch();
 
   const CHART_OPTIONS = useMemo(() => {
-    return {
+    const defaultOptions = {
       responsive: true,
       layout: {
         padding: {
           left: 53,
-          top: 12
+          top: 12,
         },
       },
       plugins: {
@@ -39,18 +42,18 @@ export default function Chart(props) {
           display: false,
         },
         title: {
-          text: ['BODY', 'RECORD'],
+          text: ["BODY", "RECORD"],
           display: props.isDetail,
-          align: 'start',
+          align: "start",
           padding: {
             top: 0,
             bottom: 10,
           },
-          color: "#fff"
+          color: "#fff",
         },
         labels: {
-          color: "red"
-        }
+          color: "red",
+        },
       },
       scales: {
         x: {
@@ -59,42 +62,54 @@ export default function Chart(props) {
             drawTicks: false,
           },
           ticks: {
-            color: "#fff"
-          }
+            color: "#fff",
+          },
         },
         y: {
-          display: true,
+          display: false,
           beginAtZero: true,
           min: 0,
           max: 120,
           ticks: {
-            stepSize: 10
-          }
+            stepSize: 10,
+          },
         },
       },
     };
-  }, [props.isDetail])
+    if (props.options) {
+      return { ...defaultOptions, ...props.options };
+    }
+    return defaultOptions;
+  }, [props.options, props.isDetail]);
 
   const BADGES_LIST = useMemo(() => {
     return [
       {
-        title: '日',
-        onClick: () => {props.onClick && props.onClick('date')}
+        title: "日",
+        onClick: () => {
+          dispatch(actions.changeChartData("date"));
+        },
       },
       {
-        title: '週',
-        onClick: () => {props.onClick && props.onClick('week')}
+        title: "週",
+        onClick: () => {
+          dispatch(actions.changeChartData("week"));
+        },
       },
       {
-        title: '月',
-        onClick: () => {props.onClick && props.onClick('month')}
+        title: "月",
+        onClick: () => {
+          dispatch(actions.changeChartData("month"));
+        },
       },
       {
-        title: '年',
-        onClick: () => {props.onClick && props.onClick('year')}
+        title: "年",
+        onClick: () => {
+          dispatch(actions.changeChartData("year"));
+        },
       },
-    ]
-  }, [props.onClick])
+    ];
+  }, [dispatch]);
 
   const data = useMemo(() => {
     return {
@@ -125,16 +140,14 @@ export default function Chart(props) {
   }, [props.id]);
 
   return (
-    <div
-      id={props.id}
-      className={classes.chart}
-      style={{position: 'relative' }}
-    >
-      {props.isDetail && props.duration && <div className={classes['duration-label']}>{props.duration}</div>}
-      <div style={{height: props.isDetail ? 250 : 312}}>
+    <div id={props.id} className={classes.chart}>
+      {props.isDetail && props.duration && (
+        <div className={classes["duration-label"]}>{props.duration}</div>
+      )}
+      <div style={{ height: props.height }}>
         <Line datasetIdKey={props.id} data={data} options={CHART_OPTIONS} />
       </div>
-      {props.isDetail && <BadgesList selectedBadge="" badgesList={BADGES_LIST} />}
+      {props.isDetail && <BadgesList badgesList={BADGES_LIST} />}
     </div>
   );
 }

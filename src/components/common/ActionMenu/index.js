@@ -40,6 +40,14 @@ export default function ActionMenu(props) {
       },
       {
         href: "#",
+        title: "コラム一覧",
+        onClick: () => {
+          props.onClickActionMenuItem();
+          navigate("/my-column");
+        },
+      },
+      {
+        href: "#",
         title: "設定",
         onClick: () => {
           props.onClickActionMenuItem();

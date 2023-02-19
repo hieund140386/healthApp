@@ -43,7 +43,7 @@ export default function Header() {
     <header className={classes.header}>
       <nav>
         <div className={classes.logo}>
-          <MenuItem imgSrc={Logo} imgName="Logo" href="/my-record" />
+          <MenuItem imgSrc={Logo} imgName="Logo" href="/" />
         </div>
         <div className={classes["menu-list"]} style={{ position: "relative" }}>
           {MENU_ITEMS.map((item) => (

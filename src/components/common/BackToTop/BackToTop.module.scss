@@ -1,0 +1,19 @@
+.back-to-top {
+  position: fixed;
+  top: 50%;
+  right: 96px;
+  transform: translateY(-50%);
+  z-index: 99;
+  border: none;
+  border-radius: 50%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 1);
+    cursor: pointer;
+    & path:first-of-type {
+      stroke: #000;
+    }
+    & path:last-of-type {
+      fill: #fff;
+    }
+  }
+}

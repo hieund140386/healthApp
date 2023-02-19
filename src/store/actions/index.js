@@ -1,37 +1,23 @@
-import { getMealsList, getMyRecord } from "../../apis";
-import { TYPES } from "../types";
+import { changeChartData } from "./getChartAction";
+import { getMyRecordInfo } from "./getRecordAction";
+import { getMyMealsList } from "./getMealsAction";
+import { getMoreMeals } from "./getMoreMealsAction";
+import { getChartData } from "./getChartDataAction";
+import { getDiariesList } from "./getDiariesListAction";
+import { getMoreDiaries } from "./getMoreDiariesList";
+import { getColumnsList } from "./getColumnsListAction";
+import { getMoreColumns } from "./getMoreColumns";
 
-export const selectChartData = payload => ({
-  type: TYPES.SELECT_CHART_DATA,
-  payload
-})
+const actions = {
+  changeChartData,
+  getMyMealsList,
+  getMyRecordInfo,
+  getMoreMeals,
+  getChartData,
+  getDiariesList,
+  getColumnsList,
+  getMoreDiaries,
+  getMoreColumns,
+};
 
-export const getMyRecordInfo = () => {
-  return async dispatch => {
-    try {
-      const res = await getMyRecord();
-      if (res.message === 'success') {
-        dispatch({
-          type: TYPES.GET_MY_RECORD,
-          payload: res.data
-        })
-      }
-    } catch (error) {
-      console.log("error: ", error)
-    }
-  }
-}
-
-export const getMyMealsList = () => async dispatch => {
-  try {
-    const res = await getMealsList();
-    if (res.message === 'success') {
-      dispatch({
-        type: TYPES.GET_MEALS_LIST,
-        payload: res.data
-      })
-    }
-  } catch (err) {
-    console.log(err)
-  }
-}
+export default actions;

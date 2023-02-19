@@ -1,0 +1,26 @@
+.column {
+  width: 216px;
+  height: 144px;
+  background-color: #2e2e2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p:first-child,
+  p:nth-child(2) {
+    color: #ffcc21;
+    font-size: 22px;
+    line-height: 27px;
+  }
+  hr {
+    width: 56px;
+    background: #fff;
+    margin-top: 10px;
+    margin-bottom: 8px;
+  }
+  p:last-child {
+    font-size: 18px;
+    line-height: 26px;
+    color: #fff;
+  }
+}

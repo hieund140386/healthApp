@@ -1,0 +1,14 @@
+.btn {
+  margin: 28px auto 64px;
+  color: #fff;
+  outline: none;
+  border: none;
+  width: 296px;
+  height: 56px;
+  text-align: center;
+  border-radius: 5px;
+  background: linear-gradient(32.95deg, #ffcc21 8.75%, #ff963c 86.64%);
+  &:hover {
+    cursor: pointer;
+  }
+}
